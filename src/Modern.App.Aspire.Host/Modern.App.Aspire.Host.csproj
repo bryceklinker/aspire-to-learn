@@ -1,0 +1,13 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.1.0">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <UserSecretsId>bb184e47-5e19-48d1-8133-1a3cd48d5541</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Modern.App.Users.Api.Host\Modern.App.Users.Api.Host.csproj" />
+    <ProjectReference Include="..\Modern.App.Users.Web.Host\Modern.App.Users.Web.Host.csproj" />
+  </ItemGroup>
+
+</Project>
