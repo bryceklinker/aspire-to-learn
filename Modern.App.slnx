@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/.aspire/">
+    <File Path=".aspire\settings.json" />
+  </Folder>
   <Folder Name="/.build/">
     <File Path="Directory.Build.props" />
     <File Path="dotnet-tools.json" />
@@ -10,6 +13,7 @@
   <Folder Name="/src/">
     <Project Path="src/Modern.App.Aspire.Defaults/Modern.App.Aspire.Defaults.csproj" />
     <Project Path="src/Modern.App.Aspire.Host/Modern.App.Aspire.Host.csproj" />
+    <Project Path="src/Modern.App.Common/Modern.App.Common.csproj" />
     <Project Path="src/Modern.App.Models/Modern.App.Models.csproj" />
     <Project Path="src/Modern.App.Users.Api.Host/Modern.App.Users.Api.Host.csproj" />
     <Project Path="src/Modern.App.Users.Core/Modern.App.Users.Core.csproj" />
@@ -17,6 +21,8 @@
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Modern.App.Aspire.Host.Tests/Modern.App.Aspire.Host.Tests.csproj" />
+    <Project Path="tests/Modern.App.Common.Tests/Modern.App.Common.Tests.csproj" />
+    <Project Path="tests/Modern.App.Test.Support/Modern.App.Test.Support.csproj" />
     <Project Path="tests/Modern.App.Users.Api.Host.Tests/Modern.App.Users.Api.Host.Tests.csproj" />
     <Project Path="tests/Modern.App.Users.Core.Tests/Modern.App.Users.Core.Tests.csproj" />
     <Project Path="tests/Modern.App.Users.Web.Host.Tests/Modern.App.Users.Web.Host.Tests.csproj" />

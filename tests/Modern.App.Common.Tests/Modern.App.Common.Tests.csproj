@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Modern.App.Common\Modern.App.Common.csproj" />
+    <ProjectReference Include="..\Modern.App.Test.Support\Modern.App.Test.Support.csproj" />
+  </ItemGroup>
+
+</Project>
