@@ -18,7 +18,7 @@ public class ModernAppStartupTests
     {
         await using var app = await ModernAppTestingHost.StartAsync();
         using var client = app.CreateHttpClient(ModernAppResourceName.UsersWeb);
-        var response = await client.GetAsync("/.health");
+        var response = await client.GetAsync("/");
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     }
 }
