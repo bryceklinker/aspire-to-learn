@@ -7,6 +7,10 @@
     <File Path="dotnet-tools.json" />
     <File Path="global.json" />
   </Folder>
+  <Folder Name="/.github/" />
+  <Folder Name="/.github/workflows/">
+    <File Path=".github\workflows\main.yaml" />
+  </Folder>
   <Folder Name="/.scm/">
     <File Path=".gitignore" />
   </Folder>
