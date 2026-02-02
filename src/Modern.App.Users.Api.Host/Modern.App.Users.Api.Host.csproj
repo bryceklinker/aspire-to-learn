@@ -5,6 +5,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Modern.App.Aspire.Defaults\Modern.App.Aspire.Defaults.csproj" />
     <ProjectReference Include="..\Modern.App.Users.Core\Modern.App.Users.Core.csproj" />
   </ItemGroup>
 

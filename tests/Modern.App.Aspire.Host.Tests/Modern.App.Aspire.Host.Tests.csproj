@@ -17,4 +17,8 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Modern.App.Aspire.Host\Modern.App.Aspire.Host.csproj" />
+  </ItemGroup>
+
 </Project>
