@@ -24,9 +24,9 @@ public class ModernAppTestingHost : IAsyncDisposable
         {
             http.ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
             {
+                ClientCertificateOptions = ClientCertificateOption.Manual,
                 ServerCertificateCustomValidationCallback = (_, _, _, _) => true
             });
-            http.AddStandardResilienceHandler();
         });
 
         var app = await builder.BuildAsync().WaitAsync(DefaultTimeout);
