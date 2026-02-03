@@ -24,6 +24,8 @@ jobs:
 
       - name: Install/Trust SSL Certificates
         run: |
+          sudo apt-get install --reinstall ca-certificates
+          
           # Create a directory for the certificate
           sudo mkdir -p /usr/local/share/ca-certificates/aspnet
           
