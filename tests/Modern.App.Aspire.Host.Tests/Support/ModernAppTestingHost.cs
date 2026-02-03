@@ -22,6 +22,10 @@ public class ModernAppTestingHost : IAsyncDisposable
         var builder = await DistributedApplicationTestingBuilder.CreateAsync<Projects.Modern_App_Aspire_Host>();
         builder.Services.ConfigureHttpClientDefaults(http =>
         {
+            http.ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = (_, _, _, _) => true
+            });
             http.AddStandardResilienceHandler();
         });
 

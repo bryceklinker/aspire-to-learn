@@ -34,7 +34,7 @@ jobs:
           sudo update-ca-certificates
       
       - name: Build
-        run: dotnet build --no-restore
+        run: dotnet build --configuration Release --no-restore
         
       - name: Run Tests
-        run: dotnet test --no-restore
+        run: dotnet test --configuration Release --no-build --no-restore
