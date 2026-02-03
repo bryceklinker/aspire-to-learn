@@ -28,7 +28,7 @@ jobs:
           sudo mkdir -p /usr/local/share/ca-certificates/aspnet
           
           # Generate the certificate and export it to the directory in PEM format
-          dotnet dev-certs https -ep /usr/local/share/ca-certificates/aspnet/https.crt --format PEM --no-password
+          dotnet dev-certs https -ep /usr/local/share/ca-certificates/aspnet/https.crt --format PEM --no-password --verbose
           
           # Update the system's trusted CA certificates store
           sudo update-ca-certificates
