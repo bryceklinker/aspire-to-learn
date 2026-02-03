@@ -10,23 +10,19 @@ jobs:
         name: Checkout Code
         with:
           fetch-depth: 0
-      
-      - uses: actions/setup-dotnet@v5
-        name: Setup .NET
-        with:
-          global-json-file: global.json
-      
-      - name: Restore Tools
-        run: dotnet tool restore
-        
-      - name: Restore Packages
-        run: dotnet restore
 
-      - name: Install/Trust SSL Certificates
+      - name: Update ca-certificates
         run: |
           sudo apt update
           sudo apt-get install --reinstall ca-certificates
           
+      - uses: actions/setup-dotnet@v5
+        name: Setup .NET
+        with:
+          global-json-file: global.json
+
+      - name: Trust Dev Certs
+        run: |
           # Create a directory for the certificate
           sudo mkdir -p /usr/local/share/ca-certificates/aspnet
           
@@ -35,6 +31,12 @@ jobs:
           
           # Update the system's trusted CA certificates store
           sudo update-ca-certificates
+
+      - name: Restore Tools
+        run: dotnet tool restore
+
+      - name: Restore Packages
+        run: dotnet restore
       
       - name: Build
         run: dotnet build --configuration Release --no-restore
