@@ -24,6 +24,7 @@ jobs:
 
       - name: Install/Trust SSL Certificates
         run: |
+          sudo apt update
           sudo apt-get install --reinstall ca-certificates
           
           # Create a directory for the certificate
