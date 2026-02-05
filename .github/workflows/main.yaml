@@ -11,11 +11,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Update ca-certificates
-        run: |
-          sudo apt update
-          sudo apt-get install --reinstall ca-certificates
-          
       - uses: actions/setup-dotnet@v5
         name: Setup .NET
         with:
@@ -23,18 +18,19 @@ jobs:
 
       - name: Trust Dev Certs
         run: |
+          sudo apt update
           sudo apt-get install --reinstall openssl libssl-dev
           
-          sudo bash -c 'echo "openssl_conf = openssl_init"' >> "/etc/ssl/openssl.cnf"  
-          sudo bash -c 'echo "[openssl_init]"' >> "/etc/ssl/openssl.cnf"
-          sudo bash -c 'echo "providers = provider_sect"' >> "/etc/ssl/openssl.cnf"
-          sudo bash -c 'echo "[provider_sect]"' >> "/etc/ssl/openssl.cnf"
-          sudo bash -c 'echo "default = default_sect"' >> "/etc/ssl/openssl.cnf"
-          sudo bash -c 'echo "legacy = legacy_sect"' >> "/etc/ssl/openssl.cnf"
-          sudo bash -c 'echo "[default_sect]"' >> "/etc/ssl/openssl.cnf"
-          sudo bash -c 'echo "activate = 1"' >> "/etc/ssl/openssl.cnf"
-          sudo bash -c 'echo "[legacy_sect]"' >> "/etc/ssl/openssl.cnf"
-          sudo bash -c 'echo "activate = 1"' >> "/etc/ssl/openssl.cnf"
+          sudo bash -c 'echo "openssl_conf = openssl_init" >> "/etc/ssl/openssl.cnf"'  
+          sudo bash -c 'echo "[openssl_init]" >> "/etc/ssl/openssl.cnf"'
+          sudo bash -c 'echo "providers = provider_sect" >> "/etc/ssl/openssl.cnf"'
+          sudo bash -c 'echo "[provider_sect]" >> "/etc/ssl/openssl.cnf"'
+          sudo bash -c 'echo "default = default_sect" >> "/etc/ssl/openssl.cnf"'
+          sudo bash -c 'echo "legacy = legacy_sect" >> "/etc/ssl/openssl.cnf"'
+          sudo bash -c 'echo "[default_sect]" >> "/etc/ssl/openssl.cnf"'
+          sudo bash -c 'echo "activate = 1" >> "/etc/ssl/openssl.cnf"'
+          sudo bash -c 'echo "[legacy_sect]" >> "/etc/ssl/openssl.cnf"'
+          sudo bash -c 'echo "activate = 1" >> "/etc/ssl/openssl.cnf"'
           
           TRUSTED_CERTS_DIRECTORY="/usr/local/share/ca-certificates"
           DEV_CERT_DIRECTORY="${TRUSTED_CERTS_DIRECTORY}/aspnet"
