@@ -25,6 +25,17 @@ jobs:
         run: |
           sudo apt-get install --reinstall openssl libssl-dev
           
+          sudo echo 'openssl_conf = openssl_init' >> "/etc/ssl/openssl.cnf"  
+          sudo echo '[openssl_init]' >> "/etc/ssl/openssl.cnf"
+          sudo echo 'providers = provider_sect' >> "/etc/ssl/openssl.cnf"
+          sudo echo '[provider_sect]' >> "/etc/ssl/openssl.cnf"
+          sudo echo 'default = default_sect' >> "/etc/ssl/openssl.cnf"
+          sudo echo 'legacy = legacy_sect' >> "/etc/ssl/openssl.cnf"
+          sudo echo '[default_sect]' >> "/etc/ssl/openssl.cnf"
+          sudo echo 'activate = 1' >> "/etc/ssl/openssl.cnf"
+          sudo echo '[legacy_sect]' >> "/etc/ssl/openssl.cnf"
+          sudo echo 'activate = 1' >> "/etc/ssl/openssl.cnf"
+          
           TRUSTED_CERTS_DIRECTORY="/usr/local/share/ca-certificates"
           DEV_CERT_DIRECTORY="${TRUSTED_CERTS_DIRECTORY}/aspnet"
           # Create a directory for the certificate
