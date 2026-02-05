@@ -4,7 +4,7 @@ on: [push]
 jobs: 
   build_and_test:
     name: Build And Test
-    runs-on: ubuntu-22.04
+    runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
         name: Checkout Code
@@ -17,31 +17,7 @@ jobs:
           global-json-file: global.json
 
       - name: Trust Dev Certs
-        run: |
-          sudo apt update
-          sudo apt-get install --reinstall openssl libssl-dev
-          
-          sudo bash -c 'echo "openssl_conf = openssl_init" >> "/etc/ssl/openssl.cnf"'  
-          sudo bash -c 'echo "[openssl_init]" >> "/etc/ssl/openssl.cnf"'
-          sudo bash -c 'echo "providers = provider_sect" >> "/etc/ssl/openssl.cnf"'
-          sudo bash -c 'echo "[provider_sect]" >> "/etc/ssl/openssl.cnf"'
-          sudo bash -c 'echo "default = default_sect" >> "/etc/ssl/openssl.cnf"'
-          sudo bash -c 'echo "legacy = legacy_sect" >> "/etc/ssl/openssl.cnf"'
-          sudo bash -c 'echo "[default_sect]" >> "/etc/ssl/openssl.cnf"'
-          sudo bash -c 'echo "activate = 1" >> "/etc/ssl/openssl.cnf"'
-          sudo bash -c 'echo "[legacy_sect]" >> "/etc/ssl/openssl.cnf"'
-          sudo bash -c 'echo "activate = 1" >> "/etc/ssl/openssl.cnf"'
-          
-          TRUSTED_CERTS_DIRECTORY="/usr/local/share/ca-certificates"
-          DEV_CERT_DIRECTORY="${TRUSTED_CERTS_DIRECTORY}/aspnet"
-          # Create a directory for the certificate
-          sudo mkdir -p "${DEV_CERT_DIRECTORY}"
-          
-          # Generate the certificate and export it to the directory in PEM format
-          sudo dotnet dev-certs https -ep "${DEV_CERT_DIRECTORY}/https.crt" --format PEM --no-password --verbose
-          sudo cp "${DEV_CERT_DIRECTORY}/https.crt" "${TRUSTED_CERTS_DIRECTORY}"
-          # Update the system's trusted CA certificates store
-          sudo update-ca-certificates
+        run: dotnet dev-certs https --trust
 
       - name: Restore Tools
         run: dotnet tool restore
