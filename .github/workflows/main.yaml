@@ -16,12 +16,6 @@ jobs:
         with:
           global-json-file: global.json
 
-      - name: Trust Dev Certs
-        run: |
-          dotnet dev-certs https --clean
-          dotnet dev-certs https
-          sudo dotnet dev-certs https --trust
-
       - name: Restore Tools
         run: dotnet tool restore
 
